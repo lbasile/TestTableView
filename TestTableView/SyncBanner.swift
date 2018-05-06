@@ -49,24 +49,20 @@ public class SyncBanner: UIButton {
     }
     
     public func show() {
-        isEnabled = true
         noHeightConstraint.isActive = false
         heightConstraint.isActive = true
         animateHeight(to: height)
     }
     
     public func hide() {
-        isEnabled = false
         heightConstraint.isActive = false
         noHeightConstraint.isActive = true
         animateHeight(to: 0)
     }
     
     private func animateHeight(to height: CGFloat) {
-//        layoutIfNeeded()
-//        noHeightConstraint.constant = height
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: [], animations: {
-            self.layoutIfNeeded()
+            self.superview?.layoutIfNeeded()
             self.weakScrollView?.contentInset = UIEdgeInsetsMake(height, 0, 0, 0)
             self.weakScrollView?.contentOffset = CGPoint(x: 0, y: -height)
         }, completion: nil)
