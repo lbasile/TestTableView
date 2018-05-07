@@ -8,13 +8,12 @@
 
 import UIKit
 
-public class SyncBanner: UIButton {
-    weak var weakViewController: UIViewController?
-    weak var weakScrollView: UIScrollView?
+public class SyncBanner: UIControl {
+    private weak var weakViewController: UIViewController?
+    private weak var weakScrollView: UIScrollView?
     
-    var noHeightConstraint: NSLayoutConstraint!
-    var heightConstraint: NSLayoutConstraint!
-    var height: CGFloat { return 40.0 }
+    private var heightConstraint: NSLayoutConstraint!
+    private var height: CGFloat { return 40.0 }
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -41,30 +40,24 @@ public class SyncBanner: UIButton {
         leadingAnchor.constraint(equalTo: to.view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         trailingAnchor.constraint(equalTo: to.view.safeAreaLayoutGuide.trailingAnchor).isActive = true
         
-        noHeightConstraint = heightAnchor.constraint(equalToConstant: 0)
-        noHeightConstraint.isActive = true
-        
-        heightConstraint = heightAnchor.constraint(equalToConstant: height)
-        heightConstraint.isActive = false
+        heightConstraint = heightAnchor.constraint(equalToConstant: 0)
+        heightConstraint.isActive = true
     }
     
     public func show() {
-        noHeightConstraint.isActive = false
-        heightConstraint.isActive = true
         animateHeight(to: height)
     }
     
     public func hide() {
-        heightConstraint.isActive = false
-        noHeightConstraint.isActive = true
         animateHeight(to: 0)
     }
     
-    private func animateHeight(to height: CGFloat) {
+    private func animateHeight(to newHeight: CGFloat) {
+        heightConstraint.constant = newHeight
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: [], animations: {
-            self.superview?.layoutIfNeeded()
-            self.weakScrollView?.contentInset = UIEdgeInsetsMake(height, 0, 0, 0)
-            self.weakScrollView?.contentOffset = CGPoint(x: 0, y: -height)
+            self.superview?.layoutIfNeeded() // this animates constraint changes
+            self.weakScrollView?.contentInset = UIEdgeInsetsMake(newHeight, 0, 0, 0)
+            self.weakScrollView?.contentOffset = CGPoint(x: 0, y: -newHeight)
         }, completion: nil)
     }
 }

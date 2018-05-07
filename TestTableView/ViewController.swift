@@ -12,6 +12,8 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     var selectAllButton: UIBarButtonItem?
+    var showBannerButton: UIBarButtonItem?
+    var isShowingBanner = false
     var syncBanner: SyncBanner!
     
     var selectAllTitle: String {
@@ -21,11 +23,20 @@ class ViewController: UIViewController {
         return "Select All"
     }
     
+    var showBannerTitle: String {
+        if isShowingBanner {
+            return "Hide Banner"
+        }
+        return "Show Banner"
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupToolbar()
         setupTableView()
         setupSyncBanner()
+        
+        title = "TableView"
     }
     
     func setupSyncBanner() {
@@ -45,6 +56,7 @@ class ViewController: UIViewController {
     
     func setupToolbar() {
         selectAllButton = UIBarButtonItem(title: selectAllTitle, style: .plain, target: self, action: #selector(toggleSelectAll))
+        showBannerButton = UIBarButtonItem(title: showBannerTitle, style: .plain, target: self, action: #selector(toggleShowBanner))
         navigationController?.setToolbarHidden(false, animated: false)
         showToolbarItems()
     }
@@ -58,19 +70,12 @@ class ViewController: UIViewController {
             setToolbarItems([flexSpace, selectAllButton!, editButton], animated: true)
         } else {
             editButton.title = "Select"
-            setToolbarItems([flexSpace, editButton], animated: true)
+            setToolbarItems([showBannerButton!, flexSpace, editButton], animated: true)
         }
     }
     
     @objc func toggleEdit() {
         tableView.setEditing(!tableView.isEditing, animated: true)
-        
-        if tableView.isEditing {
-            syncBanner.show()
-        } else {
-            syncBanner.hide()
-        }
-        
         showToolbarItems()
     }
     
@@ -81,6 +86,16 @@ class ViewController: UIViewController {
             selectAll()
         }
         selectAllButton?.title = selectAllTitle
+    }
+    
+    @objc func toggleShowBanner() {
+        isShowingBanner = !isShowingBanner
+        if isShowingBanner {
+            syncBanner.show()
+        } else {
+            syncBanner.hide()
+        }
+        showBannerButton?.title = showBannerTitle
     }
     
     func isAllSelected() -> Bool {
@@ -102,15 +117,13 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 100
+        return 30
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let numRows = tableView.numberOfRows(inSection: indexPath.section)
-        cell.backgroundColor = UIColor(hue: (CGFloat(indexPath.row)/CGFloat(numRows)), saturation: 0.6, brightness: 1, alpha: 1)
-        cell.textLabel?.text = "Here is some repeating text."
-//        cell.backgroundColor = UIColor(white: 0, alpha: CGFloat(indexPath.row)/CGFloat(numRows))
+        cell.backgroundColor = UIColor(white: 0, alpha: CGFloat(indexPath.row)/CGFloat(numRows))
         
         let selectedView = UIView()
         selectedView.backgroundColor = UIColor(white: 1, alpha: 0.3)
