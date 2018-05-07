@@ -11,6 +11,7 @@ import UIKit
 class TableViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
+    var demoTimer: Timer?
     var showBannerButton: UIBarButtonItem?
     var isShowingBanner = false
     var syncBanner: SyncBanner!
@@ -49,9 +50,8 @@ class TableViewController: UIViewController {
         tableView.addSubview(refresher)
     }
     
-    var timer: Timer?
     @objc func requestRefresh() {
-        timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { timer in
+        demoTimer = Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { timer in
             self.tableView.refreshControl?.endRefreshing()
         }
     }

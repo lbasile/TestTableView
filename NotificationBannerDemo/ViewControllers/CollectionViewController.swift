@@ -11,6 +11,7 @@ import UIKit
 class CollectionViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
+    var demoTimer: Timer?
     var showBannerButton: UIBarButtonItem?
     var isShowingBanner = false
     var syncBanner: SyncBanner!
@@ -26,6 +27,7 @@ class CollectionViewController: UIViewController {
         super.viewDidLoad()
         setupCollectionView()
         setupNavigation()
+        setupRefreshControl()
         setupSyncBanner()
         title = "CollectionView"
     }
@@ -43,6 +45,19 @@ class CollectionViewController: UIViewController {
     func setupSyncBanner() {
         syncBanner = SyncBanner()
         syncBanner.attach(to: self, above: collectionView)
+    }
+    
+    func setupRefreshControl() {
+        let refresher = UIRefreshControl()
+        refresher.addTarget(self, action: #selector(requestRefresh), for: .valueChanged)
+        collectionView.refreshControl = refresher
+        collectionView.addSubview(refresher)
+    }
+    
+    @objc func requestRefresh() {
+        demoTimer = Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { timer in
+            self.collectionView.refreshControl?.endRefreshing()
+        }
     }
     
     @objc func toggleShowBanner() {

@@ -45,19 +45,29 @@ public class SyncBanner: UIControl {
     }
     
     public func show() {
-        animateHeight(to: height)
+        heightConstraint.constant = height
+        animate(show: true)
     }
     
     public func hide() {
-        animateHeight(to: 0)
+        heightConstraint.constant = 0
+        animate(show: false)
     }
     
-    private func animateHeight(to newHeight: CGFloat) {
-        heightConstraint.constant = newHeight
+    private func animate(show: Bool) {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: [], animations: {
+            if let scrollView = self.weakScrollView {
+                let insetTop = scrollView.contentInset.top
+                let offsetY = scrollView.contentOffset.y
+                if show {
+                    scrollView.contentInset.top = insetTop + self.height
+                    scrollView.contentOffset.y = offsetY - self.height
+                } else {
+                    scrollView.contentInset.top = insetTop - self.height
+                    scrollView.contentOffset.y = offsetY + self.height
+                }
+            }
             self.superview?.layoutIfNeeded() // this animates constraint changes
-            self.weakScrollView?.contentInset = UIEdgeInsetsMake(newHeight, 0, 0, 0)
-            self.weakScrollView?.contentOffset = CGPoint(x: 0, y: -newHeight)
         }, completion: nil)
     }
 }
