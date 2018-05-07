@@ -9,7 +9,6 @@
 import UIKit
 
 class TableViewController: UIViewController {
-
     @IBOutlet weak var tableView: UITableView!
     
     var showBannerButton: UIBarButtonItem?
@@ -27,6 +26,7 @@ class TableViewController: UIViewController {
         super.viewDidLoad()
         setupNavigation()
         setupTableView()
+        setupRefreshControl()
         setupSyncBanner()
         
         title = "TableView"
@@ -40,6 +40,20 @@ class TableViewController: UIViewController {
     func setupSyncBanner() {
         syncBanner = SyncBanner()
         syncBanner.attach(to: self, above: tableView)
+    }
+    
+    func setupRefreshControl() {
+        let refresher = UIRefreshControl()
+        refresher.addTarget(self, action: #selector(requestRefresh), for: .valueChanged)
+        tableView.refreshControl = refresher
+        tableView.addSubview(refresher)
+    }
+    
+    var timer: Timer?
+    @objc func requestRefresh() {
+        timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { timer in
+            self.tableView.refreshControl?.endRefreshing()
+        }
     }
     
     func setupTableView() {
