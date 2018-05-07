@@ -45,10 +45,8 @@ class TableViewController: UIViewController {
     func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.allowsMultipleSelectionDuringEditing = true
         tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
-        
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
     
@@ -60,22 +58,6 @@ class TableViewController: UIViewController {
             syncBanner.hide()
         }
         showBannerButton?.title = showBannerTitle
-    }
-    
-    func isAllSelected() -> Bool {
-        return tableView.indexPathsForSelectedRows?.count == tableView.numberOfRows(inSection: 0)
-    }
-    
-    func selectAll() {
-        for row in 0..<tableView.numberOfRows(inSection: 0) {
-            tableView.selectRow(at: IndexPath(row: row, section: 0), animated: true, scrollPosition: .none)
-        }
-    }
-    
-    func deselectAll() {
-        for row in 0..<tableView.numberOfRows(inSection: 0) {
-            tableView.deselectRow(at: IndexPath(row: row, section: 0), animated: true)
-        }
     }
 }
 
