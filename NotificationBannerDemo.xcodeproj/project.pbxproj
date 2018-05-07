@@ -17,7 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		FCB8E33920991D8700670420 /* TestTableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestTableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCB8E33920991D8700670420 /* NotificationBannerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotificationBannerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCB8E33C20991D8700670420 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FCB8E33E20991D8700670420 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		FCB8E34120991D8700670420 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -42,7 +42,7 @@
 		FCB8E33020991D8700670420 = {
 			isa = PBXGroup;
 			children = (
-				FCB8E33B20991D8700670420 /* TestTableView */,
+				FCB8E33B20991D8700670420 /* NotificationBannerDemo */,
 				FCB8E33A20991D8700670420 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -50,12 +50,12 @@
 		FCB8E33A20991D8700670420 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FCB8E33920991D8700670420 /* TestTableView.app */,
+				FCB8E33920991D8700670420 /* NotificationBannerDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		FCB8E33B20991D8700670420 /* TestTableView */ = {
+		FCB8E33B20991D8700670420 /* NotificationBannerDemo */ = {
 			isa = PBXGroup;
 			children = (
 				FCF7BF8020A0E9A3006E22C9 /* ViewControllers */,
@@ -66,7 +66,7 @@
 				FCB8E34520991D8800670420 /* LaunchScreen.storyboard */,
 				FCB8E34820991D8800670420 /* Info.plist */,
 			);
-			path = TestTableView;
+			path = NotificationBannerDemo;
 			sourceTree = "<group>";
 		};
 		FCF7BF8020A0E9A3006E22C9 /* ViewControllers */ = {
@@ -81,9 +81,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FCB8E33820991D8700670420 /* TestTableView */ = {
+		FCB8E33820991D8700670420 /* NotificationBannerDemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FCB8E34B20991D8800670420 /* Build configuration list for PBXNativeTarget "TestTableView" */;
+			buildConfigurationList = FCB8E34B20991D8800670420 /* Build configuration list for PBXNativeTarget "NotificationBannerDemo" */;
 			buildPhases = (
 				FCB8E33520991D8700670420 /* Sources */,
 				FCB8E33620991D8700670420 /* Frameworks */,
@@ -93,9 +93,9 @@
 			);
 			dependencies = (
 			);
-			name = TestTableView;
+			name = NotificationBannerDemo;
 			productName = TestTableView;
-			productReference = FCB8E33920991D8700670420 /* TestTableView.app */;
+			productReference = FCB8E33920991D8700670420 /* NotificationBannerDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -113,7 +113,7 @@
 					};
 				};
 			};
-			buildConfigurationList = FCB8E33420991D8700670420 /* Build configuration list for PBXProject "TestTableView" */;
+			buildConfigurationList = FCB8E33420991D8700670420 /* Build configuration list for PBXProject "NotificationBannerDemo" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -126,7 +126,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FCB8E33820991D8700670420 /* TestTableView */,
+				FCB8E33820991D8700670420 /* NotificationBannerDemo */,
 			);
 		};
 /* End PBXProject section */
@@ -298,12 +298,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9VAB4C9UST;
-				INFOPLIST_FILE = TestTableView/Info.plist;
+				INFOPLIST_FILE = NotificationBannerDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.imanage.TestTableView;
+				PRODUCT_BUNDLE_IDENTIFIER = com.imanage.NotificationBannerDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -316,12 +316,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9VAB4C9UST;
-				INFOPLIST_FILE = TestTableView/Info.plist;
+				INFOPLIST_FILE = NotificationBannerDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.imanage.TestTableView;
+				PRODUCT_BUNDLE_IDENTIFIER = com.imanage.NotificationBannerDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -331,7 +331,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FCB8E33420991D8700670420 /* Build configuration list for PBXProject "TestTableView" */ = {
+		FCB8E33420991D8700670420 /* Build configuration list for PBXProject "NotificationBannerDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FCB8E34920991D8800670420 /* Debug */,
@@ -340,7 +340,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FCB8E34B20991D8800670420 /* Build configuration list for PBXNativeTarget "TestTableView" */ = {
+		FCB8E34B20991D8800670420 /* Build configuration list for PBXNativeTarget "NotificationBannerDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FCB8E34C20991D8800670420 /* Debug */,
