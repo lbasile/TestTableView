@@ -11,15 +11,48 @@ import UIKit
 class CollectionViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
+    var showBannerButton: UIBarButtonItem?
+    var isShowingBanner = false
+    var syncBanner: SyncBanner!
+    
+    var showBannerTitle: String {
+        if isShowingBanner {
+            return "Hide Banner"
+        }
+        return "Show Banner"
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
+        setupNavigation()
+        setupSyncBanner()
         title = "CollectionView"
     }
     
     func setupCollectionView() {
         collectionView.dataSource = self
         collectionView.delegate = self
+    }
+    
+    func setupNavigation() {
+        showBannerButton = UIBarButtonItem(title: "Show Banner", style: .plain, target: self, action: #selector(toggleShowBanner))
+        navigationItem.rightBarButtonItem = showBannerButton
+    }
+    
+    func setupSyncBanner() {
+        syncBanner = SyncBanner()
+        syncBanner.attach(to: self, above: collectionView)
+    }
+    
+    @objc func toggleShowBanner() {
+        isShowingBanner = !isShowingBanner
+        if isShowingBanner {
+            syncBanner.show()
+        } else {
+            syncBanner.hide()
+        }
+        showBannerButton?.title = showBannerTitle
     }
 }
 
