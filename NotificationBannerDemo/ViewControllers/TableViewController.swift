@@ -39,8 +39,8 @@ class TableViewController: UIViewController {
     }
     
     func setupSyncBanner() {
-        let image = UIImage(named: "grid")
-        syncBanner = SyncBanner(image: image, target: self, action: #selector(openModal))
+        syncBanner = SyncBanner(image: nil, target: self, action: #selector(openModal))
+        syncBanner.titleLabel?.text = "This is a message for TableView"
         syncBanner.backgroundColor = UIColor.purple
         syncBanner.attach(to: self, above: tableView)
     }

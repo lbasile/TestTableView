@@ -46,6 +46,7 @@ class CollectionViewController: UIViewController {
         let image = UIImage(named: "grid")
         syncBanner = SyncBanner(image: image, target: self, action: #selector(openModal))
         syncBanner.backgroundColor = UIColor(red:0.86, green:0.93, blue:0.9, alpha:1)
+        syncBanner.titleLabel.text = "Syncing 3 files"
         syncBanner.attach(to: self, above: collectionView)
     }
     

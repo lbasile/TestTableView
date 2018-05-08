@@ -14,30 +14,61 @@ public class SyncBanner: UIControl {
     
     private var heightConstraint: NSLayoutConstraint!
     private var height: CGFloat { return 40.0 }
+    private var image: UIImage?
     
-    public var image: UIImage?
+    public weak var imageView: UIImageView!
+    public weak var titleLabel: UILabel!
     
-    public convenience init(image: UIImage?, target: Any?, action: Selector?) {
-        self.init(frame: CGRect.zero)
+    public required init(image: UIImage?, target: Any?, action: Selector?) {
+        super.init(frame: CGRect.zero)
         self.image = image
-        
         if let action = action {
-            self.addTarget(target, action: action, for: .touchUpInside)
+            addTarget(target, action: action, for: .touchUpInside)
         }
-    }
-    
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
         setup()
     }
     
     public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setup()
+        fatalError("init(coder:) not implemented; SyncBanner not intended for storyboard use")
     }
     
     private func setup() {
         translatesAutoresizingMaskIntoConstraints = false
+        
+        let imageView = UIImageView(image: image)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFit
+        addSubview(imageView)
+        self.imageView = imageView
+        
+        let titleLabel = UILabel(frame: CGRect.zero)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.numberOfLines = 1
+        addSubview(titleLabel)
+        self.titleLabel = titleLabel
+        
+        setupConstraints()
+    }
+    
+    private func setupConstraints() {
+        imageView.setContentHuggingPriority(.required, for: .horizontal)
+        
+        // UIImageView's instrinsic size with no image is (-1,-1)
+        // We want this to take up 0 width worth of space but instead of takes up as much as possible.
+        //
+        // Setting a non-required priority width constraint of 0 creates the intended behavior.
+        let widthConstraint = imageView.widthAnchor.constraint(equalToConstant: 0)
+        widthConstraint.priority = .defaultHigh
+        widthConstraint.isActive = true
+        
+        imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
+        imageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        imageView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        
+        titleLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 20).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
     }
     
     public func attach(to: UIViewController, above: UIScrollView?) {

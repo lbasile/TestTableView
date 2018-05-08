@@ -13,7 +13,7 @@
         <!--TableView-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="TableView" id="BYZ-38-t0r" customClass="TableViewController" customModule="TestTableView" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="TableView" id="BYZ-38-t0r" customClass="TableViewController" customModule="NotificationBannerDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -81,7 +81,7 @@
         <!--Item-->
         <scene sceneID="EcC-ml-j7t">
             <objects>
-                <viewController id="xip-aJ-ejb" customClass="CollectionViewController" customModule="TestTableView" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="xip-aJ-ejb" customClass="CollectionViewController" customModule="NotificationBannerDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YDl-XI-wte">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
