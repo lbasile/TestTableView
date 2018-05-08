@@ -39,8 +39,14 @@ class TableViewController: UIViewController {
     }
     
     func setupSyncBanner() {
-        syncBanner = SyncBanner()
+        let image = UIImage(named: "grid")
+        syncBanner = SyncBanner(image: image, target: self, action: #selector(openModal))
+        syncBanner.backgroundColor = UIColor.purple
         syncBanner.attach(to: self, above: tableView)
+    }
+    
+    @objc func openModal() {
+        print("do the thing!!")
     }
     
     func setupRefreshControl() {

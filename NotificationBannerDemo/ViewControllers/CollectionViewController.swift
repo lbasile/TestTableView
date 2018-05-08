@@ -43,8 +43,14 @@ class CollectionViewController: UIViewController {
     }
     
     func setupSyncBanner() {
-        syncBanner = SyncBanner()
+        let image = UIImage(named: "grid")
+        syncBanner = SyncBanner(image: image, target: self, action: #selector(openModal))
+        syncBanner.backgroundColor = UIColor(red:0.86, green:0.93, blue:0.9, alpha:1)
         syncBanner.attach(to: self, above: collectionView)
+    }
+    
+    @objc func openModal() {
+        print("openModal()")
     }
     
     func setupRefreshControl() {

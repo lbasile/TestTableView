@@ -15,6 +15,17 @@ public class SyncBanner: UIControl {
     private var heightConstraint: NSLayoutConstraint!
     private var height: CGFloat { return 40.0 }
     
+    public var image: UIImage?
+    
+    public convenience init(image: UIImage?, target: Any?, action: Selector?) {
+        self.init(frame: CGRect.zero)
+        self.image = image
+        
+        if let action = action {
+            self.addTarget(target, action: action, for: .touchUpInside)
+        }
+    }
+    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -27,7 +38,6 @@ public class SyncBanner: UIControl {
     
     private func setup() {
         translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = UIColor(red:0.86, green:0.93, blue:0.9, alpha:1)
     }
     
     public func attach(to: UIViewController, above: UIScrollView?) {
