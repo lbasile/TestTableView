@@ -8,6 +8,12 @@
 
 import UIKit
 
+public enum NotificationBannerStyle {
+    case plain
+    case loading
+    case error
+}
+
 public class NotificationBanner: UIControl {
     private weak var weakViewController: UIViewController?
     private weak var weakScrollView: UIScrollView?
@@ -17,12 +23,15 @@ public class NotificationBanner: UIControl {
     private var image: UIImage?
     
     public var isShowing = false
+    public var style: NotificationBannerStyle
     public weak var imageView: UIImageView!
     public weak var titleLabel: UILabel!
     
-    public required init(image: UIImage?, target: Any?, action: Selector?) {
-        super.init(frame: CGRect.zero)
+    public required init(image: UIImage? = nil, style: NotificationBannerStyle, target: Any?, action: Selector?) {
+        self.style = style
         self.image = image
+        super.init(frame: CGRect.zero)
+
         if let action = action {
             addTarget(target, action: action, for: .touchUpInside)
         }
@@ -50,6 +59,23 @@ public class NotificationBanner: UIControl {
         titleLabel.font = UIFont.systemFont(ofSize: 14)
         addSubview(titleLabel)
         self.titleLabel = titleLabel
+        
+        switch style {
+        case .plain:
+            break
+        case .loading:
+            if image == nil {
+                imageView.image = UIImage(named: "refresh")
+            }
+            backgroundColor = UIColor(red:0.86, green:0.93, blue:0.9, alpha:1)
+        case .error:
+            if image == nil {
+                imageView.image = UIImage(named: "error")
+            }
+            titleLabel.textColor = UIColor.white
+            backgroundColor = UIColor(red:0.80, green:0.00, blue:0.00, alpha:1.0)
+            tintColor = UIColor.white
+        }
         
         setupConstraints()
     }

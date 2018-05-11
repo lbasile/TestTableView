@@ -32,13 +32,8 @@ class ViewController: UIViewController {
     }
     
     func setupSyncBanner() {
-        let image = UIImage(named: "error")
-        syncBanner = NotificationBanner(image: image, target: self, action: #selector(openModal))
-        syncBanner.tintColor = UIColor.white
+        syncBanner = NotificationBanner(style: .error, target: self, action: #selector(openModal))
         syncBanner.titleLabel?.text = "Server could not be reached."
-        syncBanner.titleLabel.font = UIFont.systemFont(ofSize: 14)
-        syncBanner.titleLabel.textColor = UIColor.white
-        syncBanner.backgroundColor = UIColor(red:0.80, green:0.00, blue:0.00, alpha:1.0)
         syncBanner.attach(to: self, above: nil)
     }
     

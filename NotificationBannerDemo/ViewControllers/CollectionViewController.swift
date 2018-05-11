@@ -42,16 +42,8 @@ class CollectionViewController: UIViewController {
     }
     
     func setupSyncBanner() {
-        let image = UIImage(named: "refresh")
-        syncBanner = NotificationBanner(image: image, target: self, action: #selector(openModal))
-        syncBanner.imageView.tintColor = UIColor.darkGray
-        
-        syncBanner.backgroundColor = UIColor(red:0.86, green:0.93, blue:0.9, alpha:1)
-        
+        syncBanner = NotificationBanner(style: .loading, target: self, action: #selector(openModal))
         syncBanner.titleLabel.text = "Syncing 3 files"
-        syncBanner.titleLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        syncBanner.titleLabel.textColor = UIColor.darkGray
-        
         syncBanner.attach(to: self, above: collectionView)
     }
     

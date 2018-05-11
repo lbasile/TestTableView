@@ -39,7 +39,7 @@ class TableViewController: UIViewController {
     
     func setupSyncBanner() {
         let image = UIImage(named: "error")
-        syncBanner = NotificationBanner(image: image, target: self, action: #selector(openModal))
+        syncBanner = NotificationBanner(image: image, style: .plain, target: self, action: #selector(openModal))
         syncBanner.titleLabel?.text = "Check in failed. Attempting in 30s"
         syncBanner.backgroundColor = UIColor(red:0.97, green:0.93, blue:0.73, alpha:1)
         syncBanner.attach(to: self, above: tableView)
