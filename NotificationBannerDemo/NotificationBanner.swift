@@ -1,5 +1,5 @@
 //
-//  SyncBanner.swift
+//  NotificationBanner.swift
 //  TestTableView
 //
 //  Created by Louis Basile on 5/3/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class SyncBanner: UIControl {
+public class NotificationBanner: UIControl {
     private weak var weakViewController: UIViewController?
     private weak var weakScrollView: UIScrollView?
     

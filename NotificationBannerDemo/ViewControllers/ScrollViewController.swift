@@ -11,7 +11,7 @@ import UIKit
 class ScrollViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     var showBannerButton: UIBarButtonItem?
-    var syncBanner: SyncBanner!
+    var syncBanner: NotificationBanner!
     
     var showBannerTitle: String {
         if syncBanner.isShowing {
@@ -34,7 +34,7 @@ class ScrollViewController: UIViewController {
     }
     
     func setupSyncBanner() {
-        syncBanner = SyncBanner(image: nil, target: self, action: #selector(openModal))
+        syncBanner = NotificationBanner(image: nil, target: self, action: #selector(openModal))
         syncBanner.titleLabel?.text = "Scrollview Message"
         syncBanner.titleLabel.font = UIFont.boldSystemFont(ofSize: 16)
         syncBanner.titleLabel.textColor = UIColor.purple

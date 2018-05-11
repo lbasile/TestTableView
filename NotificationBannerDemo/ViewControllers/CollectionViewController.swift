@@ -13,7 +13,7 @@ class CollectionViewController: UIViewController {
     
     var demoTimer: Timer?
     var showBannerButton: UIBarButtonItem?
-    var syncBanner: SyncBanner!
+    var syncBanner: NotificationBanner!
     
     var showBannerTitle: String {
         if syncBanner.isShowing {
@@ -43,7 +43,7 @@ class CollectionViewController: UIViewController {
     
     func setupSyncBanner() {
         let image = UIImage(named: "refresh")
-        syncBanner = SyncBanner(image: image, target: self, action: #selector(openModal))
+        syncBanner = NotificationBanner(image: image, target: self, action: #selector(openModal))
         syncBanner.imageView.tintColor = UIColor.darkGray
         
         syncBanner.backgroundColor = UIColor(red:0.86, green:0.93, blue:0.9, alpha:1)

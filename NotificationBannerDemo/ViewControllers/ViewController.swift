@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     var showBannerButton: UIBarButtonItem?
-    var syncBanner: SyncBanner!
+    var syncBanner: NotificationBanner!
     var showBannerTitle: String {
         if syncBanner.isShowing {
             return "Hide Banner"
@@ -33,7 +33,7 @@ class ViewController: UIViewController {
     
     func setupSyncBanner() {
         let image = UIImage(named: "error")
-        syncBanner = SyncBanner(image: image, target: self, action: #selector(openModal))
+        syncBanner = NotificationBanner(image: image, target: self, action: #selector(openModal))
         syncBanner.tintColor = UIColor.white
         syncBanner.titleLabel?.text = "Server could not be reached."
         syncBanner.titleLabel.font = UIFont.systemFont(ofSize: 14)
