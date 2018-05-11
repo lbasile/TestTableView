@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FC3C361C20A61206009BFCB7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3C361B20A61206009BFCB7 /* ViewController.swift */; };
 		FCB8E33D20991D8700670420 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB8E33C20991D8700670420 /* AppDelegate.swift */; };
 		FCB8E33F20991D8700670420 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB8E33E20991D8700670420 /* TableViewController.swift */; };
 		FCB8E34220991D8700670420 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCB8E34020991D8700670420 /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FC3C361B20A61206009BFCB7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FCB8E33920991D8700670420 /* NotificationBannerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotificationBannerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCB8E33C20991D8700670420 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FCB8E33E20991D8700670420 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 				FCF7BF7E20A0E99B006E22C9 /* CollectionViewController.swift */,
 				FCB8E33E20991D8700670420 /* TableViewController.swift */,
 				FCD65C6220A24FC200D56460 /* ScrollViewController.swift */,
+				FC3C361B20A61206009BFCB7 /* ViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -152,6 +155,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC3C361C20A61206009BFCB7 /* ViewController.swift in Sources */,
 				FCF7BF7F20A0E99B006E22C9 /* CollectionViewController.swift in Sources */,
 				FCB8E33F20991D8700670420 /* TableViewController.swift in Sources */,
 				FCD65C6320A24FC200D56460 /* ScrollViewController.swift in Sources */,
