@@ -73,11 +73,7 @@ class CollectionViewController: UIViewController {
     }
     
     @objc func toggleShowBanner() {
-        if !syncBanner.isShowing {
-            syncBanner.show()
-        } else {
-            syncBanner.hide()
-        }
+        syncBanner.toggle()
         showBannerButton?.title = showBannerTitle
     }
 }
