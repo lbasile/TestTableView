@@ -61,11 +61,11 @@ public class SyncBanner: UIControl {
         widthConstraint.priority = .defaultHigh
         widthConstraint.isActive = true
         
-        imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
+        imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12).isActive = true
         imageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         imageView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         
-        titleLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 20).isActive = true
+        titleLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 12).isActive = true
         titleLabel.topAnchor.constraint(equalTo: topAnchor).isActive = true
         titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
