@@ -13,11 +13,10 @@ class TableViewController: UIViewController {
     
     var demoTimer: Timer?
     var showBannerButton: UIBarButtonItem?
-    var isShowingBanner = false
     var syncBanner: SyncBanner!
     
     var showBannerTitle: String {
-        if isShowingBanner {
+        if syncBanner.isShowing {
             return "Hide Banner"
         }
         return "Show Banner"
@@ -39,9 +38,10 @@ class TableViewController: UIViewController {
     }
     
     func setupSyncBanner() {
-        syncBanner = SyncBanner(image: nil, target: self, action: #selector(openModal))
-        syncBanner.titleLabel?.text = "This is a message for TableView"
-        syncBanner.backgroundColor = UIColor.purple
+        let image = UIImage(named: "error")
+        syncBanner = SyncBanner(image: image, target: self, action: #selector(openModal))
+        syncBanner.titleLabel?.text = "Check in failed. Attempting in 30s"
+        syncBanner.backgroundColor = UIColor(red:0.97, green:0.93, blue:0.73, alpha:1)
         syncBanner.attach(to: self, above: tableView)
     }
     
@@ -71,8 +71,7 @@ class TableViewController: UIViewController {
     }
     
     @objc func toggleShowBanner() {
-        isShowingBanner = !isShowingBanner
-        if isShowingBanner {
+        if !syncBanner.isShowing {
             syncBanner.show()
         } else {
             syncBanner.hide()

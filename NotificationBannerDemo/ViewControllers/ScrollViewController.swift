@@ -11,11 +11,10 @@ import UIKit
 class ScrollViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     var showBannerButton: UIBarButtonItem?
-    var isShowingBanner = false
     var syncBanner: SyncBanner!
     
     var showBannerTitle: String {
-        if isShowingBanner {
+        if syncBanner.isShowing {
             return "Hide Banner"
         }
         return "Show Banner"
@@ -26,7 +25,7 @@ class ScrollViewController: UIViewController {
         setupNavigation()
         setupSyncBanner()
         
-        title = "TableView"
+        title = "ScrollView"
     }
     
     func setupNavigation() {
@@ -48,8 +47,7 @@ class ScrollViewController: UIViewController {
     }
     
     @objc func toggleShowBanner() {
-        isShowingBanner = !isShowingBanner
-        if isShowingBanner {
+        if !syncBanner.isShowing {
             syncBanner.show()
         } else {
             syncBanner.hide()

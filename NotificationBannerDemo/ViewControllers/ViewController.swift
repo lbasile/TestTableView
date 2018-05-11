@@ -10,10 +10,9 @@ import UIKit
 
 class ViewController: UIViewController {
     var showBannerButton: UIBarButtonItem?
-    var isShowingBanner = false
     var syncBanner: SyncBanner!
     var showBannerTitle: String {
-        if isShowingBanner {
+        if syncBanner.isShowing {
             return "Hide Banner"
         }
         return "Show Banner"
@@ -44,8 +43,7 @@ class ViewController: UIViewController {
     }
     
     @objc func toggleShowBanner() {
-        isShowingBanner = !isShowingBanner
-        if isShowingBanner {
+        if !syncBanner.isShowing {
             syncBanner.show()
         } else {
             syncBanner.hide()

@@ -13,11 +13,10 @@ class CollectionViewController: UIViewController {
     
     var demoTimer: Timer?
     var showBannerButton: UIBarButtonItem?
-    var isShowingBanner = false
     var syncBanner: SyncBanner!
     
     var showBannerTitle: String {
-        if isShowingBanner {
+        if syncBanner.isShowing {
             return "Hide Banner"
         }
         return "Show Banner"
@@ -74,8 +73,7 @@ class CollectionViewController: UIViewController {
     }
     
     @objc func toggleShowBanner() {
-        isShowingBanner = !isShowingBanner
-        if isShowingBanner {
+        if !syncBanner.isShowing {
             syncBanner.show()
         } else {
             syncBanner.hide()
