@@ -16,6 +16,7 @@ public class SyncBanner: UIControl {
     private var height: CGFloat { return 40.0 }
     private var image: UIImage?
     
+    public var isShowing = false
     public weak var imageView: UIImageView!
     public weak var titleLabel: UILabel!
     
@@ -34,6 +35,7 @@ public class SyncBanner: UIControl {
     
     private func setup() {
         translatesAutoresizingMaskIntoConstraints = false
+        tintColor = UIColor.darkGray
         
         let imageView = UIImageView(image: image)
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -44,6 +46,8 @@ public class SyncBanner: UIControl {
         let titleLabel = UILabel(frame: CGRect.zero)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.numberOfLines = 1
+        titleLabel.textColor = UIColor.darkGray
+        titleLabel.font = UIFont.systemFont(ofSize: 14)
         addSubview(titleLabel)
         self.titleLabel = titleLabel
         
@@ -86,11 +90,13 @@ public class SyncBanner: UIControl {
     }
     
     public func show() {
+        isShowing = true
         heightConstraint.constant = height
         animate(show: true)
     }
     
     public func hide() {
+        isShowing = false
         heightConstraint.constant = 0
         animate(show: false)
     }
