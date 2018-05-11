@@ -89,6 +89,14 @@ public class SyncBanner: UIControl {
         heightConstraint.isActive = true
     }
     
+    public func toggle() {
+        if !isShowing {
+            show()
+        } else {
+            hide()
+        }
+    }
+    
     public func show() {
         isShowing = true
         heightConstraint.constant = height
