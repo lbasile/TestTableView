@@ -124,12 +124,18 @@ public class NotificationBanner: UIControl {
     }
     
     public func show() {
+        guard !isShowing else {
+            return
+        }
         isShowing = true
         heightConstraint.constant = height
         animate(show: true)
     }
     
     public func hide() {
+        guard isShowing else {
+            return
+        }
         isShowing = false
         heightConstraint.constant = 0
         animate(show: false)
